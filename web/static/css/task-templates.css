@@ -1,0 +1,250 @@
+.templates-page {
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+}
+
+.templates-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 16px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    min-width: 0;
+}
+
+.templates-filter {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1 1 260px;
+    min-width: 0;
+    max-width: 420px;
+}
+
+.templates-filter label {
+    color: #bbb;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.templates-filter select,
+.template-modal-content input[type="text"],
+.template-modal-content input[type="number"],
+.template-modal-content select,
+.template-modal-content textarea {
+    width: 100%;
+    padding: 10px 12px;
+    background: #2d2d2d;
+    border: 1px solid #444;
+    border-radius: 6px;
+    color: #e0e0e0;
+    font-size: 14px;
+}
+
+.template-modal-content textarea {
+    min-height: 96px;
+    resize: vertical;
+}
+
+.templates-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    gap: 16px;
+    width: 100%;
+    min-width: 0;
+}
+
+.template-card {
+    min-width: 0;
+    background: #242424;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 18px;
+}
+
+.template-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    gap: 12px;
+    margin-bottom: 12px;
+    min-width: 0;
+}
+
+.template-card h3 {
+    margin: 0 0 8px;
+    font-size: 17px;
+    color: #f1f3f4;
+    overflow-wrap: anywhere;
+}
+
+.template-badges {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.template-badge {
+    max-width: 100%;
+    padding: 4px 8px;
+    border-radius: 999px;
+    background: #35363a;
+    color: #d7d9dc;
+    font-size: 12px;
+    overflow-wrap: anywhere;
+}
+
+.template-badge.priority-2 {
+    background: #553030;
+    color: #ffb3ad;
+}
+
+.template-badge.priority-1 {
+    background: #4c4226;
+    color: #f3d68a;
+}
+
+.template-badge.priority-0 {
+    background: #2e4730;
+    color: #add7b2;
+}
+
+.template-meta {
+    color: #adb2b8;
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+
+.template-description-block {
+    margin-top: 12px;
+}
+
+.template-description-label {
+    margin-bottom: 4px;
+    color: #8f98a3;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.template-description {
+    color: #b7bdc5;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.template-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.template-actions button,
+.form-actions button {
+    padding: 9px 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.form-actions button[type="submit"] {
+    background: #1b53e0;
+    color: white;
+}
+
+.form-actions .cancel {
+    background: #5f6368;
+    color: white;
+}
+
+.form-actions button[type="submit"]:hover {
+    background: #1967d2;
+}
+
+.form-actions .cancel:hover {
+    background: #757575;
+}
+
+.template-actions .btn {
+    flex: 1 1 120px;
+    min-width: 0;
+    justify-content: center;
+}
+
+.templates-empty {
+    padding: 24px;
+    background: #242424;
+    border: 1px dashed #3f4145;
+    border-radius: 8px;
+    color: #9aa0a6;
+}
+
+.template-modal-content {
+    width: min(560px, 100%);
+    max-width: 560px;
+    max-height: calc(100vh - 32px);
+    overflow-y: auto;
+}
+
+.template-modal-content .form-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.template-modal-content .form-group {
+    margin-bottom: 16px;
+}
+
+.template-modal-content .form-group label {
+    display: block;
+    margin-bottom: 6px;
+    color: #bbb;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.template-modal-content .form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+    .templates-toolbar {
+        align-items: stretch;
+    }
+
+    .templates-filter {
+        flex-basis: 100%;
+        max-width: none;
+    }
+
+    .template-card-header {
+        flex-direction: column;
+    }
+
+    .template-actions {
+        width: 100%;
+    }
+
+    .template-actions button,
+    .template-modal-content .form-actions button {
+        width: 100%;
+    }
+
+    .template-modal-content .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .template-modal-content .form-actions {
+        flex-direction: column;
+    }
+}

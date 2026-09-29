@@ -1,0 +1,165 @@
+/* timesheet.css — Стили для табеля переработок */
+/* Совместимо с app.css */
+
+.timesheet-container {
+    background: #1e1e1e;
+    color: #e0e0e0;
+    padding: 24px;
+    border-radius: 10px;
+    margin-top: 20px;
+    border: 1px solid #333;
+    width: 100%;
+    max-width: 1200px;
+    min-width: 0;
+    margin-left: auto;
+    margin-right: auto;
+    overflow-x: auto;
+}
+
+.timesheet-container h2 {
+    color: #e0e0e0;
+    font-size: 1.5em;
+    margin: 0 0 16px;
+    font-weight: 500;
+    border-bottom: 1px solid #333;
+    padding-bottom: 12px;
+}
+
+/* Фильтры */
+.filters {
+    display: flex;
+    gap: 16px;
+    align-items: end;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.filters .form-group {
+    margin-bottom: 0;
+}
+
+.filters .form-group label {
+    display: block;
+    margin-bottom: 6px;
+    color: #bbbbbb;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.filters input[type="date"] {
+    width: 140px;
+    padding: 9px 12px;
+    background: #2d2d2d;
+    border: 1px solid #444;
+    border-radius: 6px;
+    color: #e0e0e0;
+    font-size: 14px;
+}
+
+#loadTimesheetBtn {
+    background: #1a73e8;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+
+#loadTimesheetBtn:hover {
+    background: #1967d2;
+}
+
+/* Таблица табеля */
+.timesheet-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+    font-size: 14px;
+}
+
+.timesheet-table th,
+.timesheet-table td {
+    border: 1px solid #444;
+    padding: 10px;
+    text-align: center;
+    min-width: 50px;
+}
+
+.timesheet-table th {
+    background-color: #2d2d2d;
+    color: #e0e0e0;
+    font-weight: 500;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.timesheet-table td {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    transition: background 0.2s;
+}
+
+.timesheet-table tr:hover td {
+    background-color: #2a2a2a;
+}
+
+/* Ячейки с переработками */
+.overwork-cell {
+    background-color: #1a73e8 !important;
+    color: white;
+    font-weight: 500;
+    animation: pulse 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes pulse {
+    from {
+        background-color: #1a73e8;
+    }
+    to {
+        background-color: #1967d2;
+    }
+}
+
+/* Сообщения */
+.timesheet-empty {
+    margin: 16px 0;
+    padding: 12px;
+    border: 1px dashed #444;
+    border-radius: 6px;
+    background: #242424;
+    color: #b8b8b8;
+    font-size: 14px;
+}
+
+.timesheet-container .error {
+    background: #b3211e;
+    color: white;
+    padding: 12px;
+    border-radius: 6px;
+    margin: 12px 0;
+    font-size: 14px;
+}
+
+/* Отзывчивость */
+@media (max-width: 768px) {
+    .timesheet-container {
+        margin-left: 12px;
+        margin-right: 12px;
+        border-radius: 8px;
+        padding: 16px;
+    }
+
+    .filters {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .filters input,
+    .filters select {
+        width: 100%;
+    }
+}

@@ -1,0 +1,32 @@
+{{ define "content" }}
+<link rel="stylesheet" href="/static/css/admin-statuses.css?v=5">
+<h2>Управление статусами задач</h2>
+
+<!-- Список статусов -->
+<div class="section">
+    <h3>Статусы</h3>
+    <button id="createStatusBtn" class="add-btn">➕ Добавить статус</button>
+    <ul id="statusList" class="list">
+        <!-- Будет заполнено через JS -->
+    </ul>
+</div>
+
+<!-- Редактирование переходов -->
+<div class="section" id="transitionsSection" style="display: none;">
+    <h3>Переходы из <span id="currentStatusName"></span></h3>
+    <div class="form-group">
+        <label>Добавить разрешённый переход</label>
+        <div style="display: flex; gap: 10px;">
+            <select id="toStatusSelect"></select>
+            <button id="addTransitionBtn">Добавить</button>
+        </div>
+        <div id="rolesContainer"></div>
+    </div>
+    <div id="outgoingTransitions" class="transition-list" style="list-style: none; margin-left: 0; padding-left: 0;"></div>
+</div>
+
+<div class="section">
+    <h3>Входящие переходы</h3>
+    <div id="incomingTransitions" class="transition-list" style="list-style: none; margin-left: 0; padding-left: 0;"></div>
+</div>
+{{ end }}

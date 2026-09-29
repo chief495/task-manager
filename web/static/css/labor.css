@@ -1,0 +1,770 @@
+/* =========================================================
+   labor.css — стили калькулятора трудозатрат
+   Область действия: .labor-page (не затрагивает app.css)
+   ========================================================= */
+
+/* ── Корневой контейнер страницы ── */
+.labor-page {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-family: 'Geologica', Tahoma, Geneva, Verdana, sans-serif;
+    color: #e0e0e0;
+}
+
+/* ── Верхняя панель с заголовком и кнопками экспорта ── */
+.labor-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.labor-title-block h2 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #f1f2f2;
+    margin: 0 0 2px;
+}
+
+.labor-subtitle {
+    font-size: 0.82rem;
+    color: #999;
+}
+
+.labor-toolbar-actions {
+    display: flex;
+    gap: 8px;
+}
+
+/* ── Вкладки ── */
+.labor-tabs {
+    display: flex;
+    gap: 2px;
+    border-bottom: 2px solid #333;
+    overflow-x: auto;
+}
+
+.labor-tab {
+    padding: 10px 20px;
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+    color: #888;
+    font-size: 0.88rem;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: color 0.2s, border-color 0.2s, background 0.2s;
+    font-family: inherit;
+    border-radius: 4px 4px 0 0;
+}
+
+.labor-tab:hover {
+    color: #e0e0e0;
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.labor-tab.active {
+    color: #6a9bff;
+    border-bottom-color: #1b53e0;
+    background: rgba(27, 83, 224, 0.07);
+}
+
+/* ── Содержимое вкладок ── */
+.labor-tab-content {
+    display: none;
+}
+
+.labor-tab-content.active {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    animation: laborFadeIn 0.25s ease;
+}
+
+@keyframes laborFadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Toast-контейнер ── */
+.toast-container {
+    position: fixed;
+    top: 76px;
+    right: 20px;
+    z-index: 3000;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    pointer-events: none;
+}
+
+.toast {
+    padding: 11px 18px;
+    border-radius: 6px;
+    font-size: 0.87rem;
+    font-weight: 500;
+    max-width: 340px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    pointer-events: auto;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    animation: laborToastIn 0.28s ease;
+}
+
+@keyframes laborToastIn {
+    from { transform: translateX(110px); opacity: 0; }
+    to   { transform: translateX(0);     opacity: 1; }
+}
+
+.toast.success { background: rgba(34, 197, 94, 0.92);  color: #fff; }
+.toast.error   { background: rgba(220, 38,  38, 0.92);  color: #fff; }
+.toast.warning { background: rgba(245, 158, 11, 0.92); color: #1b1a1b; }
+
+/* ── Карточки ── */
+.labor-page .card {
+    background: #1e1e1e;
+    border: 1px solid #2e2e2e;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.labor-page .card-header {
+    background: #252525;
+    border-bottom: 1px solid #333;
+    padding: 13px 18px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #f1f2f2;
+}
+
+.card-header-with-action {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.labor-page .card-body {
+    padding: 18px;
+}
+
+/* ── Форм-элементы ── */
+/* используем уже существующие .form-group и .form-group label из app.css */
+/* здесь только то, чего нет в app.css */
+
+.labor-page .form-control {
+    width: 100%;
+    padding: 9px 12px;
+    background: #2d2d2d;
+    border: 1px solid #444;
+    border-radius: 6px;
+    font-size: 0.88rem;
+    color: #f1f2f2;
+    font-family: inherit;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.labor-page .form-control:focus {
+    outline: none;
+    border-color: #1b53e0;
+    box-shadow: 0 0 0 2px rgba(27, 83, 224, 0.22);
+}
+
+.labor-page .form-control::placeholder {
+    color: #666;
+}
+
+.labor-page select.form-control {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23888' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    padding-right: 30px;
+}
+
+.labor-page select.form-control option,
+.labor-page select.form-control optgroup {
+    background: #2d2d2d;
+    color: #f1f2f2;
+}
+
+.labor-page textarea.form-control {
+    resize: vertical;
+    min-height: 64px;
+}
+
+.labor-page input[type="number"].form-control {
+    -moz-appearance: textfield;
+}
+.labor-page input[type="number"].form-control::-webkit-outer-spin-button,
+.labor-page input[type="number"].form-control::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+/* ── Кнопки ── */
+.labor-page .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 500;
+    font-family: inherit;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.labor-page .btn:hover    { transform: translateY(-1px); }
+.labor-page .btn:active   { transform: translateY(0); }
+
+.labor-page .btn-sm {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+}
+
+.labor-page .btn-primary {
+    background: #1b53e0;
+    color: #fff;
+    box-shadow: 0 2px 6px rgba(27, 83, 224, 0.3);
+}
+.labor-page .btn-primary:hover {
+    background: #1967d2;
+    box-shadow: 0 4px 12px rgba(27, 83, 224, 0.4);
+}
+
+.labor-page .btn-success {
+    background: #1e8c45;
+    color: #fff;
+    box-shadow: 0 2px 6px rgba(30, 140, 69, 0.3);
+}
+.labor-page .btn-success:hover {
+    background: #187a3b;
+    box-shadow: 0 4px 12px rgba(30, 140, 69, 0.4);
+}
+
+.labor-page .btn-danger {
+    background: #b3211e;
+    color: #fff;
+    box-shadow: 0 2px 6px rgba(179, 33, 30, 0.3);
+}
+.labor-page .btn-danger:hover {
+    background: #9a1c19;
+    box-shadow: 0 4px 12px rgba(179, 33, 30, 0.4);
+}
+
+.labor-page .btn-warning {
+    background: #c97d10;
+    color: #fff;
+    box-shadow: 0 2px 6px rgba(201, 125, 16, 0.3);
+}
+.labor-page .btn-warning:hover {
+    background: #b36e0d;
+}
+
+.labor-page .btn-outline {
+    background: transparent;
+    color: #aaa;
+    border: 1px solid #444;
+}
+.labor-page .btn-outline:hover {
+    background: #2d2d2d;
+    color: #f1f2f2;
+    border-color: #666;
+}
+
+.labor-page .btn-group {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+/* ── Таблицы ── */
+.labor-page .table-wrapper {
+    overflow-x: auto;
+    border-radius: 6px;
+    border: 1px solid #2e2e2e;
+    margin-bottom: 4px;
+}
+
+.labor-page .table-wrapper table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.labor-page .table-wrapper th {
+    background: #252525;
+    color: #6a9bff;
+    padding: 11px 13px;
+    text-align: left;
+    font-size: 0.8rem;
+    font-weight: 600;
+    white-space: nowrap;
+    border-bottom: 2px solid #1b53e0;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.labor-page .table-wrapper td {
+    padding: 9px 13px;
+    border-bottom: 1px solid #2a2a2a;
+    font-size: 0.85rem;
+    vertical-align: middle;
+    color: #e0e0e0;
+}
+
+.labor-page .table-wrapper tbody tr:hover {
+    background: #242424;
+}
+
+.labor-page .table-wrapper tbody tr:nth-child(even) {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.labor-page .table-wrapper tbody tr:nth-child(even):hover {
+    background: #242424;
+}
+
+/* Итоговая строка в таблице категорий */
+.labor-page .result-total-row td {
+    font-weight: 700;
+    color: #6a9bff;
+    background: rgba(27, 83, 224, 0.1);
+    border-top: 2px solid #1b53e0;
+}
+
+/* ── Поиск ── */
+.labor-page .search-bar {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+}
+
+.labor-page .search-bar .form-control {
+    flex: 1;
+    min-width: 180px;
+}
+
+/* ── Глобальные коэффициенты ── */
+.global-coeff-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 10px;
+}
+
+.global-coeff-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    background: #252525;
+    border: 1px solid #333;
+    border-radius: 6px;
+    transition: border-color 0.2s;
+}
+
+.global-coeff-item:hover {
+    border-color: #c97d10;
+}
+
+.global-coeff-item label {
+    flex: 1;
+    font-size: 0.84rem;
+    color: #bbb;
+    margin: 0;
+}
+
+.global-coeff-item .global-coeff-input {
+    width: 80px;
+    padding: 6px 8px;
+    background: #2d2d2d;
+    border: 1px solid #444;
+    border-radius: 5px;
+    color: #e8a020;
+    font-size: 0.88rem;
+    font-weight: 600;
+    text-align: center;
+    font-family: inherit;
+    transition: border-color 0.2s;
+    -moz-appearance: textfield;
+}
+
+.global-coeff-item .global-coeff-input::-webkit-outer-spin-button,
+.global-coeff-item .global-coeff-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+.global-coeff-item .global-coeff-input:focus {
+    outline: none;
+    border-color: #c97d10;
+    box-shadow: 0 0 0 2px rgba(201, 125, 16, 0.2);
+}
+
+/* ── Позиции расчёта ── */
+.calc-item {
+    background: #252525;
+    border: 1px solid #333;
+    border-radius: 7px;
+    padding: 14px;
+    margin-bottom: 10px;
+    transition: border-color 0.2s;
+}
+
+.calc-item:hover {
+    border-color: #1b53e0;
+}
+
+.calc-item-main {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.item-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 28px;
+    height: 28px;
+    background: #1b53e0;
+    color: #fff;
+    border-radius: 50%;
+    font-size: 0.78rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 26px;
+}
+
+.calc-item-fields {
+    display: grid;
+    grid-template-columns: 1fr 120px 120px;
+    gap: 10px;
+    flex: 1;
+}
+
+.calc-item-fields .form-group {
+    margin-bottom: 0;
+}
+
+.calc-item-fields .form-group label {
+    font-size: 0.76rem;
+    color: #888;
+    margin-bottom: 4px;
+}
+
+/* ── Коэффициенты позиции ── */
+.coeff-selector {
+    border-top: 1px solid #2e2e2e;
+    padding-top: 10px;
+    margin-bottom: 10px;
+}
+
+.coeff-selector-title {
+    font-size: 0.78rem;
+    color: #777;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.coeff-selector-body {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.coeff-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 10px;
+    background: rgba(27, 83, 224, 0.1);
+    border: 1px solid transparent;
+    border-radius: 14px;
+    font-size: 0.78rem;
+    color: #6a9bff;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+    user-select: none;
+}
+
+.coeff-chip:hover {
+    background: rgba(27, 83, 224, 0.2);
+    border-color: #1b53e0;
+}
+
+.coeff-chip:has(input:checked) {
+    background: #1b53e0;
+    color: #fff;
+    border-color: #1967d2;
+}
+
+.coeff-chip input[type="checkbox"] {
+    margin: 0;
+    cursor: pointer;
+    accent-color: #fff;
+}
+
+.coeff-selector-body .muted {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+/* ── Кнопки внизу секции расчёта ── */
+.calc-actions {
+    text-align: center;
+    padding-top: 14px;
+    border-top: 1px solid #2e2e2e;
+    margin-top: 4px;
+}
+
+/* ── Пустое состояние ── */
+.empty-state {
+    text-align: center;
+    padding: 32px 20px;
+    color: #666;
+    font-size: 0.9rem;
+    border: 1px dashed #333;
+    border-radius: 6px;
+    margin-bottom: 14px;
+}
+
+/* ── Результаты — карточки-сводки ── */
+.result-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 14px;
+    margin-bottom: 20px;
+}
+
+.summary-card {
+    background: #252525;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Синяя полоска сверху у каждой карточки */
+.summary-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: #1b53e0;
+}
+
+.summary-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+
+.summary-card .value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #6a9bff;
+    line-height: 1.2;
+}
+
+.summary-card .label {
+    font-size: 0.8rem;
+    color: #888;
+    margin-top: 4px;
+}
+
+/* ── Панель экспорта ── */
+.export-bar {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    border-top: 1px solid #2e2e2e;
+    padding-top: 14px;
+    margin-top: 6px;
+    flex-wrap: wrap;
+}
+
+/* ── Модальные окна ── */
+/* перекрываем .modal из app.css только внутри .labor-page */
+.labor-page .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.72);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(3px);
+}
+
+.labor-page .modal-overlay.active {
+    display: flex;
+    animation: laborFadeIn 0.2s ease;
+}
+
+.labor-page .modal {
+    /* сбрасываем позиционирование из app.css */
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 95%;
+    max-width: 560px;
+    max-height: 90vh;
+    overflow-y: auto;
+    background: #1e1e1e;
+    border: 1px solid #333;
+    border-radius: 10px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+    animation: laborModalIn 0.28s ease;
+}
+
+@keyframes laborModalIn {
+    from { transform: translateY(40px) scale(0.96); opacity: 0; }
+    to   { transform: translateY(0)    scale(1);    opacity: 1; }
+}
+
+.labor-page .modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 18px;
+    background: #252525;
+    border-bottom: 1px solid #333;
+    border-radius: 10px 10px 0 0;
+}
+
+.labor-page .modal-header h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #6a9bff;
+    margin: 0;
+    border: none;
+    padding: 0;
+}
+
+.labor-page .modal-close {
+    background: none;
+    border: none;
+    color: #888;
+    font-size: 1.4rem;
+    cursor: pointer;
+    padding: 2px 7px;
+    border-radius: 4px;
+    line-height: 1;
+    transition: background 0.2s, color 0.2s;
+}
+
+.labor-page .modal-close:hover {
+    background: rgba(179, 33, 30, 0.15);
+    color: #f87171;
+}
+
+.labor-page .modal-body {
+    padding: 18px;
+}
+
+.labor-page .modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 12px 18px;
+    background: #252525;
+    border-top: 1px solid #333;
+    border-radius: 0 0 10px 10px;
+}
+
+/* ── Адаптив ── */
+@media (max-width: 900px) {
+    .calc-item-fields {
+        grid-template-columns: 1fr;
+    }
+
+    .calc-item-main {
+        flex-direction: column;
+    }
+
+    .item-number {
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 640px) {
+    .labor-toolbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .labor-tabs {
+        gap: 0;
+    }
+
+    .labor-tab {
+        padding: 8px 12px;
+        font-size: 0.82rem;
+    }
+
+    .result-summary {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .global-coeff-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .labor-page .modal {
+        margin: 10px;
+        max-height: calc(100vh - 20px);
+    }
+
+    .export-bar {
+        flex-direction: column;
+    }
+}
+
+/* ── Хлебные крошки ── */
+.labor-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.82rem;
+    margin-bottom: 4px;
+}
+
+.labor-breadcrumb-link {
+    color: #6a9bff;
+    text-decoration: none;
+}
+
+.labor-breadcrumb-link:hover { text-decoration: underline; }
+
+.labor-breadcrumb-sep { color: #555; }
+
+.labor-breadcrumb-current { color: #888; }
+
+/* ── Сетка параметров ── */
+.labor-params-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+@media (max-width: 640px) {
+    .labor-params-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Название расчёта в заголовке результатов ── */
+.labor-result-name {
+    font-size: 0.82rem;
+    color: #888;
+    font-weight: 400;
+}

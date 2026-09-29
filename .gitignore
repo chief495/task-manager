@@ -1,0 +1,33 @@
+# Node.js
+node_modules/
+
+# Go
+bin/
+.gocache/
+*.test
+*.out
+/api
+go_build_*
+main_linux
+
+# npm logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# macOS
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
+
+# env
+.env
+.env.local
+.env.*.local
+
+# local certificates and keys
+*.pem
+*.key
+*.crt

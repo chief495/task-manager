@@ -1,0 +1,165 @@
+/* ==========================================================
+   components.css — общие переиспользуемые UI-компоненты
+   Подключается на всех страницах через base.html
+   ========================================================== */
+
+/* ── Базовая кнопка ── */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 9px 16px;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: inherit;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.2s, border-color 0.2s, transform 0.15s, box-shadow 0.2s, opacity 0.2s;
+    box-sizing: border-box;
+}
+
+.btn:hover   { transform: translateY(-1px); }
+.btn:active  { transform: translateY(0); }
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* ── Размеры ── */
+.btn-sm {
+    padding: 6px 12px;
+    font-size: 13px;
+}
+
+.btn-lg {
+    padding: 12px 22px;
+    font-size: 15px;
+}
+
+/* ── Синяя — основное действие ── */
+.btn-primary {
+    background: #1b53e0;
+    color: #fff;
+    border-color: #1b53e0;
+    box-shadow: 0 2px 8px rgba(27, 83, 224, 0.25);
+}
+.btn-primary:hover {
+    background: #1967d2;
+    border-color: #1967d2;
+    box-shadow: 0 4px 14px rgba(27, 83, 224, 0.35);
+}
+
+/* ── Серая — нейтральное действие ── */
+.btn-neutral {
+    background: #3a3a3a;
+    color: #f1f2f2;
+    border-color: #4a4a4a;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+}
+.btn-neutral:hover {
+    background: #4a4a4a;
+    border-color: #5a5a5a;
+}
+
+/* ── Зелёная — добавить / успех ── */
+.btn-success {
+    background: #1e8c45;
+    color: #fff;
+    border-color: #1e8c45;
+    box-shadow: 0 2px 8px rgba(30, 140, 69, 0.25);
+}
+.btn-success:hover {
+    background: #187a3b;
+    border-color: #187a3b;
+    box-shadow: 0 4px 14px rgba(30, 140, 69, 0.35);
+}
+
+/* ── Зелёная Excel ── */
+.btn-excel {
+    background: #217346;
+    color: #fff;
+    border-color: #217346;
+    box-shadow: 0 2px 8px rgba(33, 115, 70, 0.25);
+}
+.btn-excel:hover {
+    background: #1a5c38;
+    border-color: #1a5c38;
+    box-shadow: 0 4px 14px rgba(33, 115, 70, 0.35);
+}
+
+/* ── Красная — удаление / опасное действие ── */
+.btn-danger {
+    background: #b3211e;
+    color: #fff;
+    border-color: #b3211e;
+    box-shadow: 0 2px 8px rgba(179, 33, 30, 0.25);
+}
+.btn-danger:hover {
+    background: #eb3323;
+    border-color: #eb3323;
+    box-shadow: 0 4px 14px rgba(179, 33, 30, 0.35);
+}
+
+/* ── Жёлтая — редактирование / предупреждение ── */
+.btn-warning {
+    background: #c97d10;
+    color: #fff;
+    border-color: #c97d10;
+    box-shadow: 0 2px 8px rgba(201, 125, 16, 0.25);
+}
+.btn-warning:hover {
+    background: #b36e0d;
+    border-color: #b36e0d;
+}
+
+/* ── Outline — второстепенное действие ── */
+.btn-outline {
+    background: transparent;
+    color: #aaa;
+    border-color: #444;
+}
+.btn-outline:hover {
+    background: #2d2d2d;
+    color: #f1f2f2;
+    border-color: #666;
+}
+
+/* ── Группа кнопок ── */
+.btn-group {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+/* ── Тулбар страницы — верхняя панель с кнопками ── */
+.page-toolbar {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+/* ── Link-кнопка — текстовая ── */
+.btn-link {
+    background: none;
+    border: none;
+    color: #1b53e0;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 0;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: color 0.2s;
+    font-family: inherit;
+}
+.btn-link:hover { color: #1967d2; }
+.btn-link.danger { color: #b3211e; }
+.btn-link.danger:hover { color: #eb3323; }

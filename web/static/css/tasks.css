@@ -1,0 +1,846 @@
+/* tasks.css — Стили для управления задачами */
+/* Совместимо с app.css */
+
+/* =========================
+   ОСНОВНОЙ КОНТЕЙНЕР
+   ========================= */
+.tasks-container {
+    background: #1e1e1e;
+    color: #e0e0e0;
+    padding: 24px;
+    border-radius: 10px;
+    margin-top: 20px;
+    border: 1px solid #333;
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* =========================
+   ФАКТ ВЫПОЛНЕНИЯ ЗАДАЧИ
+   ========================= */
+.task-fact-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    align-items: center;
+    margin-top: 6px;
+    padding: 8px 12px;
+    background: rgba(52, 168, 83, 0.08);
+    border: 1px solid rgba(52, 168, 83, 0.25);
+    border-radius: 6px;
+    font-size: 12px;
+    color: #c0c0c0;
+}
+
+.fact-badge {
+    font-weight: 700;
+    color: #34a853;
+    white-space: nowrap;
+}
+
+.fact-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+}
+
+.fact-label {
+    color: #888;
+    font-weight: 500;
+}
+
+/* Выполнена в срок */
+.fact-in-time {
+    font-weight: 600;
+    color: #34a853;
+    white-space: nowrap;
+}
+
+/* Просрочена */
+.fact-overdue {
+    font-weight: 600;
+    color: #ea4335;
+    white-space: nowrap;
+}
+
+.tasks-container h2,
+.tasks-container h3 {
+    color: #e0e0e0;
+    font-size: 1.5em;
+    margin: 0 0 16px;
+    font-weight: 500;
+    border-bottom: 1px solid #333;
+    padding-bottom: 12px;
+}
+
+.tasks-container h3 {
+    font-size: 1.3em;
+    border-color: #444;
+}
+
+/* =========================
+   УПРАВЛЕНИЕ / ТУЛБАР
+   ========================= */
+.controls {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    min-width: 0;
+}
+
+/* Тулбар задач */
+.controls {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    min-width: 0;
+}
+
+/* Кнопки действий задачи остаются специфичными */
+.task-actions {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.view-controls {
+    display: flex;
+    border: 1px solid #444;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.view-btn {
+    background: #2d2d2d;
+    color: #bbb;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s;
+}
+
+.view-btn:hover {
+    background: #3a3a3a;
+}
+
+.view-btn.active {
+    background: #1a73e8;
+    color: white;
+}
+
+.tasks-controls {
+    width: 100%;
+}
+
+.task-filter-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+}
+
+.task-filter-group-project {
+    margin-left: auto;
+}
+
+.task-filter-group label {
+    color: #ddd;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+/* =========================
+   ФИЛЬТРЫ
+   ========================= */
+#projectFilter,
+#categoryFilter {
+    max-width: 100%;
+    min-width: 0;
+    padding: 6px 10px;
+    border-radius: 4px;
+    border: 1px solid #444;
+    background: #2d2d2d;
+    color: #e0e0e0;
+    font-size: 14px;
+}
+
+/* =========================
+   СПИСОК ЗАДАЧ
+   ========================= */
+#tasksContainer {
+    width: 100%;
+    min-width: 0;
+}
+
+.tasks-section {
+    width: 100%;
+    min-width: 0;
+    margin-top: 28px;
+    text-align: left;
+}
+
+.tasks-section:first-child {
+    margin-top: 0;
+}
+
+.tasks-section-title {
+    display: block;
+    margin: 0 0 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #333;
+    color: #e0e0e0;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.25;
+    text-align: left;
+}
+
+.tasks-section-content {
+    width: 100%;
+    min-width: 0;
+    margin-top: 0;
+    text-align: left;
+}
+
+.tasks-section-content > p {
+    margin: 0;
+    color: #aaa;
+}
+
+.task-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    min-width: 0;
+}
+
+.task-item {
+    display: block;
+    min-width: 0;
+    padding: 16px;
+    background: #2d2d2d;
+    border: 1px solid #333;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    color: #e0e0e0;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    transition: background 0.2s, box-shadow 0.2s;
+}
+
+.task-list .task-item:last-child {
+    margin-bottom: 0;
+}
+
+.task-item:hover {
+    background: #3a3a3a;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.task-header {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 6px;
+    overflow-wrap: anywhere;
+}
+
+.task-meta {
+    margin: 4px 0;
+    line-height: 1.4;
+    font-size: 13px;
+    color: #bbb;
+    overflow-wrap: anywhere;
+}
+
+/* =========================
+   ОПИСАНИЕ ЗАДАЧИ (MARKDOWN)
+   ========================= */
+.task-description-label {
+    display: block;
+    width: 100%;
+    margin: 6px 0 4px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #aaa;
+    text-align: left;
+}
+
+.task-description-content {
+    display: block;
+    clear: both;
+    width: 100%;
+    min-width: 0;
+    color: #e0e0e0;
+    font-size: 13px;
+    line-height: 1.6;
+    text-align: left;
+}
+
+.task-description-content.task-description-block {
+    display: block;
+    max-width: 100%;
+    width: 100%;
+    margin: 0 0 6px;
+    padding: 0;
+    overflow-wrap: anywhere;
+    word-break: normal;
+    box-sizing: border-box;
+}
+
+.task-description-content > * {
+    display: block;
+    text-align: left;
+    margin-left: 0;
+}
+
+/* Убираем лишние отступы у первого и последнего элементов */
+.task-description-content > :first-child {
+    margin-top: 0;
+}
+
+.task-description-content > :last-child {
+    margin-bottom: 0;
+}
+
+/* Markdown-элементы */
+.task-description-content p {
+    margin: 0 0 6px;
+}
+
+.task-description-content ul,
+.task-description-content ol {
+    margin: 0 0 8px;
+    padding-left: 20px;
+    margin-left: 0;
+    list-style-position: inside;
+}
+
+.task-description-content li {
+    margin: 2px 0;
+    line-height: 1.5;
+    padding-left: 2px;
+}
+
+.task-description-content h1,
+.task-description-content h2,
+.task-description-content h3,
+.task-description-content h4 {
+    margin: 10px 0 4px;
+    color: #fff;
+    font-weight: 600;
+}
+
+.task-description-content code {
+    background: #1e1e1e;
+    color: #e0e0e0;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 0.85em;
+    white-space: pre-wrap;
+}
+
+.task-description-content pre {
+    background: #1e1e1e;
+    padding: 10px;
+    border-radius: 6px;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    border: 1px solid #333;
+    margin: 0 0 8px;
+}
+
+.task-description-content blockquote {
+    border-left: 3px solid #555;
+    margin: 4px 0 8px;
+    padding-left: 12px;
+    color: #aaa;
+}
+
+/* =========================
+   ЧЕКБОКСЫ В MARKDOWN
+   ========================= */
+.task-markdown-checkbox {
+    margin-right: 6px;
+    cursor: pointer;
+    accent-color: #1a73e8;
+    width: 15px;
+    height: 15px;
+    vertical-align: middle;
+    flex-shrink: 0;
+}
+
+/* Строки с чекбоксами */
+.task-description-content li:has(input[type="checkbox"]) {
+    list-style: none;
+    position: relative;
+    margin-left: 0;
+    display: block;
+    padding: 1px 0 1px 14px;
+}
+
+.task-description-content li:has(input[type="checkbox"])::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #bbb;
+    line-height: 1.5;
+    font-size: 14px;
+}
+
+.task-description-content label {
+    cursor: pointer;
+}
+
+.kanban-task-details .task-description-block {
+    padding-left: 4px !important;
+}
+
+.kanban-task-details .task-description-content ul,
+.kanban-task-details .task-description-content ol {
+    padding-left: 16px;
+}
+
+/* =========================
+   СТАТУС-БЕЙДЖИ
+   ========================= */
+.status-badge {
+    background: #4c4c4c;
+    color: #e0e0e0;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+    margin-left: 8px;
+}
+
+.status-badge.work     { background: #1a73e8; color: white; }
+.status-badge.check    { background: #fbbc05; color: #111; }
+.status-badge.pause    { background: #fb6c05; color: #111; }
+.status-badge.done     { background: #34a853; color: white; }
+.status-badge.created  { background: #666;    color: white; }
+.status-badge.cancelled{ background: #ea4335; color: white; }
+
+/* =========================
+   КНОПКИ ДЕЙСТВИЙ
+   ========================= */
+.task-actions {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    min-width: 0;
+}
+
+.transition-btn {
+    background: #3c4043;
+    color: #e0e0e0;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.transition-btn:hover         { background: #5f6368; }
+.transition-btn.small         { font-size: 11px; padding: 4px 8px; }
+
+.transition-btn[data-to="1"]  { background: #666; }
+.transition-btn[data-to="1"]:hover { background: #555; }
+
+.transition-btn[data-to="2"]  { background: #1a73e8; }
+.transition-btn[data-to="2"]:hover { background: #1967d2; }
+
+.transition-btn[data-to="3"]  { background: #34a853; color: #111; }
+.transition-btn[data-to="3"]:hover { background: #2d9045; }
+
+.transition-btn[data-to="4"]  { background: #34a853; }
+.transition-btn[data-to="4"]:hover { background: #2d9045; }
+
+.transition-btn[data-to="5"]  { background: #ea4335; }
+.transition-btn[data-to="5"]:hover { background: #d93025; }
+
+.transition-btn[data-to="6"]  { background: #fbbc05; color: #111; }
+.transition-btn[data-to="6"]:hover { background: #e3a804; }
+
+.no-transition {
+    font-size: 12px;
+    color: #888;
+    font-style: italic;
+}
+
+.edit-btn {
+    background: rgba(147, 147, 147, 0.32);
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.edit-btn:hover {
+    background: #2d9045;
+}
+
+.secondary-action {
+    background: #3b2f1f;
+    color: #f2d6a2;
+    border: 1px solid #6b5429;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.secondary-action:hover {
+    background: #4b3b23;
+    border-color: #8a6b32;
+}
+
+/* =========================
+   KANBAN ДОСКА
+   ========================= */
+.kanban-board {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    gap: 16px;
+    width: 100%;
+    min-width: 0;
+    overflow-x: visible;
+    padding: 0;
+}
+
+.kanban-column {
+    min-width: 0;
+    background: #2d2d2d;
+    border-radius: 8px;
+    padding: 10px;
+    border: 1px solid transparent;
+    transition: border-color 0.2s, background 0.2s;
+}
+
+.kanban-column.drag-over {
+    border-color: #1a73e8;
+    background: #283044;
+}
+
+.kanban-column.drop-invalid {
+    border-color: rgba(234, 67, 53, 0.65);
+    background: rgba(234, 67, 53, 0.08);
+    box-shadow: inset 0 0 0 1px rgba(234, 67, 53, 0.18);
+}
+
+.kanban-column h3 {
+    margin: 0 0 12px;
+    font-size: 15px;
+    color: #e0e0e0;
+    overflow-wrap: anywhere;
+}
+
+.kanban-task {
+    min-width: 0;
+    background: #1e1e1e;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    border: 1px solid #333;
+    cursor: grab;
+    transition: opacity 0.2s, background 0.2s, border-color 0.2s;
+}
+
+.kanban-task:active {
+    cursor: grabbing;
+}
+
+.kanban-task.dragging {
+    opacity: 0.55;
+}
+
+/* =========================
+   ДИАГРАММА ГАНТА
+   ========================= */
+.gantt-filters {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+    min-width: 0;
+}
+
+.gantt-filters label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #bbb;
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.gantt-filters input[type="date"] {
+    width: 140px;
+    padding: 6px 12px;
+    background: #2d2d2d;
+    border: 1px solid #444;
+    border-radius: 6px;
+    color: #e0e0e0;
+    font-size: 14px;
+}
+
+.gantt-filters input[type="date"]:focus {
+    outline: none;
+    border-color: #1a73e8;
+    box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
+}
+
+.today-badge {
+    margin-left: 0;
+    padding: 6px 12px;
+    background: #0a365c;
+    color: #4bb4e6;
+    border: 1px solid #1a73e8;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.gantt-chart-wrap {
+    min-height: 520px;
+    min-width: 0;
+}
+
+.gantt-chart-canvas {
+    width: 100% !important;
+    height: 100% !important;
+    border: 1px solid #444;
+    border-radius: 6px;
+    background: #1e1e1e;
+    display: block;
+}
+
+/* =========================
+   МОДАЛЬНОЕ ОКНО
+   ========================= */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: #1e1e1e;
+    color: #e0e0e0;
+    padding: 24px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 500px;
+    max-height: calc(100vh - 32px);
+    overflow-y: auto;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.modal-content h3 {
+    margin: 0 0 16px;
+    font-size: 1.4em;
+    color: #e0e0e0;
+}
+
+/* =========================
+   ФОРМА
+   ========================= */
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    color: #bbb;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group input[type="datetime-local"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    background: #2d2d2d;
+    border: 1px solid #444;
+    border-radius: 6px;
+    color: #e0e0e0;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.form-group textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+.template-select-group {
+    padding: 12px;
+    background: #252525;
+    border: 1px solid #3a3a3a;
+    border-radius: 8px;
+}
+
+.task-template-select {
+    appearance: none;
+    background-image:
+        linear-gradient(45deg, transparent 50%, #9aa0a6 50%),
+        linear-gradient(135deg, #9aa0a6 50%, transparent 50%);
+    background-position:
+        calc(100% - 18px) calc(50% - 3px),
+        calc(100% - 12px) calc(50% - 3px);
+    background-size: 6px 6px, 6px 6px;
+    background-repeat: no-repeat;
+    padding-right: 36px !important;
+}
+
+.task-template-select:disabled {
+    color: #8a8a8a;
+    background-color: #262626;
+    cursor: not-allowed;
+}
+
+.form-hint {
+    margin-top: 8px;
+    color: #9aa0a6;
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+.template-page-link {
+    display: inline-block;
+    margin-top: 10px;
+    color: #8ab4f8;
+    font-size: 13px;
+    text-decoration: none;
+}
+
+.template-page-link:hover {
+    color: #a8c7fa;
+    text-decoration: underline;
+}
+
+.form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.form-actions button {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.form-actions button[type="submit"] {
+    background: #1a73e8;
+    color: white;
+}
+
+.form-actions button[type="submit"]:hover {
+    background: #1967d2;
+}
+
+.form-actions button.cancel {
+    background: #5f6368;
+    color: white;
+}
+
+.form-actions button.cancel:hover {
+    background: #757575;
+}
+
+/* =========================
+   ОШИБКИ
+   ========================= */
+.error {
+    background: #b3211e;
+    color: white;
+    padding: 12px;
+    border-radius: 6px;
+    margin: 12px 0;
+    font-size: 14px;
+}
+
+/* =========================
+   АДАПТИВНОСТЬ
+   ========================= */
+@media (max-width: 768px) {
+    .tasks-container {
+        border-radius: 8px;
+        padding: 16px;
+    }
+
+    .controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .task-filter-group,
+    .task-filter-group-project {
+        width: 100%;
+        margin-left: 0;
+        align-items: stretch;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .task-filter-group label {
+        white-space: normal;
+    }
+
+    .view-controls {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .view-btn {
+        flex: 1;
+        text-align: center;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .form-actions button {
+        width: 100%;
+    }
+
+    .task-description {
+        max-width: 100%;
+    }
+}

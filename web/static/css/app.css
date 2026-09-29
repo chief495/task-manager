@@ -1,0 +1,656 @@
+/*noinspection CssUnknownTarget*/
+@font-face {
+    font-family: 'CustomHeaderFont';
+    src: url('../fonts/TT_Travels_Next_Bold.woff2') format('woff2'),
+    url('../fonts/TT_Travels_Next_Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+/*noinspection ALL*/
+@font-face {
+    font-family: 'Geologica';
+    src: url('/static/fonts/Geologica-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+/* Общие стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+    overflow-x: hidden;
+}
+.header-title {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    font-weight: 600;
+    gap: 12px;
+    font-family: 'CustomHeaderFont', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.header-logo {
+    height: 1em;
+    width: auto;
+    vertical-align: middle;
+}
+body {
+    font-family: 'Geologica', Tahoma, Geneva, Verdana, sans-serif;
+    background: #1b1a1b;
+    color: #e0e0e0;
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Контейнер: header + main + sidebar */
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-width: 0;
+}
+
+/* Header */
+.header {
+    background: #1b53e0;
+    color: white;
+    padding: 16px 24px;
+    font-size: 20px;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 20;
+    width: 100%;
+    max-width: 100%;
+    position: fixed;
+    min-width: 0;
+}
+
+.logout-btn {
+    background: #b3211e;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.2s;
+}
+
+.logout-btn:hover {
+    background: #eb3323;
+}
+
+/* Основная структура */
+.main-layout {
+    display: flex;
+    flex: 1;
+    padding-top: 60px;
+    width: 100%;
+    min-width: 0;
+    min-height: 100vh;
+    background: linear-gradient(to right, #1e1e1e 0 239px, #333 239px 240px, #1b1a1b 240px);
+}
+
+/* Sidebar */
+.sidebar {
+    width: 240px;
+    flex: 0 0 240px;
+    background: #1e1e1e;
+    color: #f1f2f2;
+    height: calc(100vh - 64px);
+    padding: 20px 0;
+    position: sticky;
+    top: 64px;
+    border-right: 1px solid #333;
+    transition: transform 0.3s ease, width 0.3s ease;
+    z-index: 10;
+}
+
+.sidebar.collapsed {
+    width: 60px;
+    flex-basis: 60px;
+    overflow: hidden;
+}
+
+.main-layout.sidebar-collapsed {
+    background: linear-gradient(to right, #1e1e1e 0 59px, #333 59px 60px, #1b1a1b 60px);
+}
+
+.sidebar.collapsed h3,
+.sidebar.collapsed .sidebar-menu a span {
+    display: none;
+}
+
+.sidebar.collapsed .sidebar-menu a {
+    padding: 12px;
+}
+
+.sidebar.collapsed .sidebar-menu a::before {
+    content: attr(data-short);
+    font-size: 18px;
+    display: block;
+    text-align: center;
+}
+
+.sidebar-menu {
+    list-style: none;
+}
+
+.sidebar-menu li {
+    margin-bottom: 4px;
+}
+
+.sidebar-menu a {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    color: #f1f2f2;
+    text-decoration: none;
+    font-size: 15px;
+    transition: background 0.2s, color 0.2s;
+    border-radius: 4px;
+    margin: 0 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sidebar-menu a:hover {
+    background: #333;
+    color: white;
+}
+
+.sidebar-menu a.active {
+    background: #1b53e0;
+    color: #f1f2f2;
+    font-weight: 500;
+}
+
+.sidebar-menu .badge {
+    margin-left: auto;
+    background: #1b53e0;
+    color: white;
+    font-size: 12px;
+    padding: 2px 8px;
+    border-radius: 12px;
+    min-width: 24px;
+    text-align: center;
+    font-weight: 500;
+}
+
+/* Кнопка сворачивания */
+.toggle-sidebar-btn {
+    background: #1b53e0;
+    color: white;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    margin-right: 12px;
+    transition: background 0.2s;
+}
+
+.toggle-sidebar-btn:hover {
+    background: #1967d2;
+}
+
+/* Контент */
+.content {
+    flex: 1;
+    min-width: 0;
+    max-width: 100%;
+    padding: 24px;
+    background: #1b1a1b;
+    color: #f1f1f2;
+    transition: margin-left 0.3s ease;
+}
+
+.content.sidebar-collapsed {
+    margin-left: 0;
+}
+
+.content > * {
+    max-width: 100%;
+}
+
+img,
+svg,
+canvas,
+video,
+table {
+    max-width: 100%;
+}
+
+@media (max-width: 768px) {
+    .header {
+        min-height: 56px;
+        padding: 12px 14px;
+        gap: 10px;
+    }
+
+    .header-title {
+        font-size: 17px;
+        gap: 8px;
+    }
+
+    .toggle-sidebar-btn {
+        flex: 0 0 32px;
+        margin-right: 0;
+    }
+
+    .user-menu {
+        flex: 0 0 auto;
+    }
+
+    .logout-btn {
+        padding: 7px 10px;
+        font-size: 13px;
+    }
+
+    .main-layout {
+        padding-top: 56px;
+        background: #1b1a1b;
+    }
+
+    .sidebar {
+        position: fixed;
+        top: 56px;
+        left: 0;
+        width: min(240px, 86vw);
+        flex-basis: auto;
+        height: calc(100vh - 56px);
+        transform: translateX(0);
+        box-shadow: 8px 0 24px rgba(0, 0, 0, 0.35);
+    }
+
+    .sidebar.collapsed {
+        width: min(240px, 86vw);
+        flex-basis: auto;
+        transform: translateX(-100%);
+    }
+
+    .sidebar.collapsed h3,
+    .sidebar.collapsed .sidebar-menu a span {
+        display: initial;
+    }
+
+    .sidebar.collapsed .sidebar-menu a {
+        padding: 12px 20px;
+    }
+
+    .sidebar.collapsed .sidebar-menu a::before {
+        content: none;
+    }
+
+    .content {
+        width: 100%;
+        padding: 16px;
+    }
+
+    .modal {
+        padding: 12px;
+    }
+
+    .modal-content {
+        max-width: calc(100vw - 24px);
+        max-height: calc(100vh - 24px);
+        overflow-y: auto;
+    }
+}
+
+/* Надпись "Загрузка" */
+.loading {
+    text-align: center;
+    color: #aaaaaa;
+    margin-top: 20px;
+    font-style: italic;
+}
+
+/* Скрытие */
+.hidden {
+    display: none;
+}
+/* === Модальное окно === */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    position: relative;
+    background: #1e1e1e;
+    color: #e0e0e0;
+    padding: 24px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.modal-content h3 {
+    margin: 0 0 16px;
+    font-size: 1.4em;
+    color: #e0e0e0;
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    color: #bbb;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.form-group input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    background: #2d2d2d;
+    border: 1px solid #444;
+    border-radius: 6px;
+    color: #e0e0e0;
+    font-size: 14px;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.form-actions button {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.form-actions button[type="submit"] {
+    background: #1a73e8;
+    color: white;
+}
+
+.form-actions button[type="submit"]:hover {
+    background: #1967d2;
+}
+
+.form-actions button.cancel {
+    background: #5f6368;
+    color: white;
+}
+
+.form-actions button.cancel:hover {
+    background: #757575;
+}
+
+/* === Кнопка и меню пользователя === */
+.user-menu {
+    margin-left: auto;
+}
+
+.btn-small {
+    background: #3c4043;
+    color: #e0e0e0;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-small:hover {
+    background: #5f6368;
+}
+/* Кнопка добавления */
+.add-task-btn {
+    background: #1b53e0;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: background 0.2s, transform 0.1s;
+}
+
+.add-task-btn:hover {
+    background: #1967d2;
+    transform: translateY(-1px);
+}
+
+.add-task-btn:active {
+    transform: translateY(0);
+}
+
+/* Модальное окно */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.2s ease-out;
+}
+
+.modal-content {
+    position: relative;
+    background: #1b1a1b;
+    padding: 24px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    border: 1px solid #333;
+    animation: scaleIn 0.2s ease-out;
+}
+
+.modal-close-x {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border: 1px solid #444;
+    border-radius: 50%;
+    background: #2d2d2d;
+    color: #f1f2f2;
+    cursor: pointer;
+    font-size: 22px;
+    line-height: 1;
+    z-index: 2;
+}
+
+.modal-close-x:hover {
+    background: #3a3a3a;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.modal-content h3 {
+    margin-top: 0;
+    color: #f1f2f2;
+    border-bottom: 1px solid #444;
+    padding-bottom: 12px;
+    font-weight: 500;
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    color: #bbbbbb;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 10px 12px;
+    background: #2d2d2d;
+    border: 1px solid #444;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #f1f2f2;
+    transition: border 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #1b53e0;
+    box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.form-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.form-actions button {
+    padding: 9px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.form-actions button[type="submit"] {
+    background: #1b53e0;
+    color: white;
+}
+
+.form-actions button[type="submit"]:hover {
+    background: #1967d2;
+    transform: translateY(-1px);
+}
+
+.form-actions button[type="submit"]:active {
+    transform: translateY(0);
+}
+
+.form-actions .cancel {
+    background: #3a3a3a;
+    color: #f1f2f2;
+}
+
+.form-actions .cancel:hover {
+    background: #4a4a4a;
+}
+
+/* Общие таблицы (на будущее) */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+    background: #1e1e1e;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.table th, .table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #333;
+}
+
+.table th {
+    background: #2d2d2d;
+    color: #e0e0e0;
+    font-weight: 500;
+}
+
+.table tr:hover {
+    background: #2a2a2a;
+}
+
+@media (max-width: 768px) {
+    .modal {
+        padding: 12px;
+    }
+
+    .modal-content {
+        width: 100%;
+        max-width: calc(100vw - 24px);
+        max-height: calc(100vh - 24px);
+        overflow-y: auto;
+    }
+
+    .form-actions {
+        flex-wrap: wrap;
+    }
+
+    .form-actions button {
+        flex: 1 1 140px;
+    }
+}

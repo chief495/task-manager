@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="/static/css/app.css" />
+    <link rel="stylesheet" href="/static/css/components.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="icon" href="/static/images/logo.svg" type="image/svg+xml">
+</head>
+<body>
+<div class="container">
+    <!-- Header -->
+    <div class="header">
+        <div class="header-title">
+            <img src="/static/images/logo.svg" alt="Task Manager" class="header-logo">
+            Task Manager
+        </div>
+
+    </div>
+
+    <div class="main-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <ul class="sidebar-menu" id="sidebarMenu">
+                <!-- Сюда будет вставлено меню -->
+            </ul>
+        </aside>
+
+        <!-- Контент -->
+        <main class="content" id="content"></main>
+    </div>
+</div>
+<!-- Добавьте перед закрывающим </body> -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/3.1.0/chartjs-plugin-annotation.min.js" integrity="sha512-8MntMizyPIYkcjoDkYqgrQOuWOZsp92zlZ9d7M2RCG0s1Zua8H215p2PdsxS7qg/4hLrHrdPsZgVZpXheHYT+Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<!-- Общие скрипты -->
+<script src="/static/js/app.js?v=20260521-1" type="module"></script>
+<!-- Странице-специфичные скрипты -->
+{{ range .Scripts }}
+<script src="{{ . }}" type="module"></script>
+{{ end }}</body>
+</html>

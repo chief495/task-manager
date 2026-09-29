@@ -1,0 +1,60 @@
+
+{{ define "content" }}
+    <link rel="stylesheet" href="/static/css/app.css"/>
+    <link rel="stylesheet" href="/static/css/admin-projects.css"/>
+
+<div class="container admin-projects-container">
+    <h1>Управление проектами</h1>
+
+    <!-- Кнопка выхода -->
+    <button id="logoutBtn" class="admin-logout-btn">Выйти</button>
+
+    <!-- Кнопка добавления проекта -->
+    <button id="createProjectBtn">+ Добавить проект</button>
+
+    <!-- Список проектов -->
+    <ul id="projectList"></ul>
+
+    <!-- Модальное окно добавления/редактирования -->
+    <div id="projectModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h3 id="modalTitle">Добавить проект</h3>
+            <form id="projectForm">
+                <input type="hidden" id="projectID"/>
+
+                <div class="form-group">
+                    <label for="projectName">Название</label>
+                    <input type="text" id="projectName" required/>
+                </div>
+
+                <div class="form-group">
+                    <label for="projectDescription">Описание</label>
+                    <textarea id="projectDescription"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="projectStage">Стадия</label>
+                    <select id="projectStage" required>
+                        <option value="">Выберите стадию...</option>
+                        <!-- Заполняется динамически -->
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="projectResponsible">Ответственный</label>
+                    <select id="projectResponsible" required>
+                        <option value="">Выберите пользователя...</option>
+                        <!-- Заполняется динамически -->
+                    </select>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="cancel" onclick="closeModal()">Отмена</button>
+                    <button type="submit">Сохранить</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{{ end }}
